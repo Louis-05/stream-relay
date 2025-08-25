@@ -1,5 +1,5 @@
 use anyhow::Error;
-use gstreamer::prelude::*;
+use gstreamer::{prelude::*, DebugGraphDetails};
 
 use crate::config::Config;
 mod config;
@@ -38,16 +38,6 @@ fn main() -> Result<(), Error> {
     // The link from decoder to the sink will be handled dynamically.
     source.link(&decoder)?;
 
-    source.connect_notify(Some("stats"), |v,_pspec| {
-         let val = v.property_value("stats") ;
-
-        if let Ok(stats) = val.get::<gstreamer::Structure>() {
-            println!("🚀 SRT Stats Updated:\n{}\n", stats.to_string());
-        } else {
-            println!("err")
-        }
-        
-    });
     
     decoder.connect_pad_added(move |_, src_pad| {
         println!(
@@ -104,15 +94,10 @@ fn main() -> Result<(), Error> {
                 println!("End-Of-Stream reached.");
                 break;
             }
+            MessageView::StreamStart(_) => {
+                pipeline.debug_to_dot_file(DebugGraphDetails::ALL, "./debug_dot");
+            }
             _ => (),
-        }
-
-        let val = source.property_value("stats") ;
-
-        if let Ok(stats) = val.get::<gstreamer::Structure>() {
-            println!("🚀 SRT Stats Updated:\n{}\n", stats.to_string());
-        } else {
-            println!("err")
         }
     }
 
