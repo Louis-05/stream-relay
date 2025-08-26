@@ -1,0 +1,33 @@
+application/x-srt-statistics, callers=(GValueArray)< "application/x-srt-statistics\,\ packets-sent\=\(gint64\)0\,\ packets-sent-lost\=\(int\)0\,\ packets-retransmitted\=\(int\)0\,\ packet-ack-received\=\(int\)0\,\ packet-nack-received\=\(int\)0\,\ send-duration-us\=\(guint64\)0\,\ bytes-sent\=\(guint64\)0\,\ bytes-retransmitted\=\(guint64\)0\,\ bytes-sent-dropped\=\(guint64\)0\,\ packets-sent-dropped\=\(int\)0\,\ send-rate-mbps\=\(double\)0\,\ negotiated-latency-ms\=\(int\)250\,\ packets-received\=\(gint64\)2270\,\ packets-received-lost\=\(int\)0\,\ packets-received-retransmitted\=\(int\)0\,\ packets-received-dropped\=\(int\)0\,\ packet-ack-sent\=\(int\)372\,\ packet-nack-sent\=\(int\)0\,\ bytes-received\=\(guint64\)2713832\,\ bytes-received-lost\=\(guint64\)0\,\ receive-rate-mbps\=\(double\)2.7525162068353906\,\ bandwidth-mbps\=\(double\)2546.9400000000001\,\ rtt-ms\=\(double\)0.21199999999999999\,\ caller-address\=\(GSocketAddress\)NULL\;" >, bytes-received-total=(guint64)2530856;
+
+
+application/x-srt-statistics,
+  callers = (GValueArray)
+    <
+      "application/x-srt-statistics,
+      packets-sent=(gint64)0,
+      packets-sent-lost=(int)0,
+      packets-retransmitted=(int)0,
+      packet-ack-received=(int)0,
+      packet-nack-received=(int)0,
+      send-duration-us=(guint64)0,
+      bytes-sent=(guint64)0,
+      bytes-retransmitted=(guint64)0,
+      bytes-sent-dropped=(guint64)0,
+      packets-sent-dropped=(int)0,
+      send-rate-mbps=(double)0,
+      negotiated-latency-ms=(int)250,
+      packets-received=(gint64)2270,
+      packets-received-lost=(int)0,
+      packets-received-retransmitted=(int)0,
+      packets-received-dropped=(int)0,
+      packet-ack-sent=(int)372,
+      packet-nack-sent=(int)0,
+      bytes-received=(guint64)2713832,
+      bytes-received-lost=(guint64)0,
+      receive-rate-mbps=(double)2.7525162068353906,
+      bandwidth-mbps=(double)2546.9400000000001,
+      rtt-ms=(double)0.21199999999999999,
+      caller-address=(GSocketAddress)NULL;"
+    >,
+  bytes-received-total = (guint64)2530856;

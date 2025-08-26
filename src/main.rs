@@ -1,8 +1,9 @@
 use anyhow::Error;
-use gstreamer::prelude::*;
+use gstreamer::{prelude::*, Structure};
 
-use crate::config::Config;
+use crate::{config::Config, srt_stats::SrtStatisticsReport};
 mod config;
+mod srt_stats;
 
 fn main() -> Result<(), Error> {
     let config = Config::load_from_env()?;
@@ -109,8 +110,11 @@ fn main() -> Result<(), Error> {
 
         let val = source.property_value("stats") ;
 
-        if let Ok(stats) = val.get::<gstreamer::Structure>() {
-            println!("🚀 SRT Stats Updated:\n{}\n", stats.to_string());
+        if let Ok(stats_struct) = val.get::<gstreamer::Structure>() {
+            match SrtStatisticsReport::try_from(stats_struct) {
+                Ok(stats) =>  println!("test {:?}",stats),
+                Err(e) => println!("err {e}"),
+            };
         } else {
             println!("err")
         }
