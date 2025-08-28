@@ -1,5 +1,5 @@
 use anyhow::Error;
-use gstreamer::{prelude::*, Structure};
+use gstreamer::{Structure, glib::Value, prelude::*};
 
 use crate::{config::Config, srt_stats::SrtStatisticsReport};
 mod config;
@@ -12,44 +12,82 @@ fn main() -> Result<(), Error> {
 
     // 2. Create the GStreamer elements
     // srtclientsrc uri=srt://192.168.1.55:8888
-    let source = gstreamer::ElementFactory::make("srtsrc")
+    let srt_source = gstreamer::ElementFactory::make("srtsrc")
         .name("source")
-        .build()?;
-    source.set_property("localaddress", "0.0.0.0");
-    source.set_property("keep-listening", true);
-    source.set_property_from_str("mode", "listener");
-    source.set_property("localport", config.input_port as u32);
-    source.set_property("streamid", config.stream_id);
-    //source.set_property("passphrase", config.stream_password);
-
-    let decoder = gstreamer::ElementFactory::make("decodebin")
-            .name("decoder")
-            .build()?;
-
-    // autovideosink
-    let video_sink = gstreamer::ElementFactory::make("autovideosink")
-        .name("video_sink")
+        .property("localaddress", "0.0.0.0")
+        .property("keep-listening", true)
+        .property_from_str("mode", "listener")
+        .property("authentication", true)
+        .property("localport", config.input_port as u32)
+        .property_from_str("pbkeylen", "32")
+        .property("passphrase", &config.passphrase)
         .build()?;
 
-    // 3. Create the pipeline to hold the elements
+    let tsdemux = gstreamer::ElementFactory::make("tsdemux")
+        .name("tsdemux")
+        .build()?;
+
+    let multiqueue = gstreamer::ElementFactory::make("multiqueue")
+        .name("multiqueue")
+        .build()?;
+
+    let h264parse = gstreamer::ElementFactory::make("h264parse")
+        .name("h264parse")
+        .build()?;
+
+    let aacparse = gstreamer::ElementFactory::make("aacparse")
+        .name("aacparse")
+        .build()?;
+
+    let flvmux = gstreamer::ElementFactory::make("flvmux")
+        .name("flvmux")
+        .property("streamable", true)
+        .build()?;
+
+    let rtmp_out = gstreamer::ElementFactory::make("rtmpsink")
+        .name("rtmp_out")
+        .build()?;
+
     let pipeline = gstreamer::Pipeline::with_name("test-pipeline");
-    pipeline.add_many([&source, &decoder, &video_sink])?;
+    pipeline.add_many([
+        &srt_source,
+        &tsdemux,
+        &multiqueue,
+        &h264parse,
+        &aacparse,
+        &flvmux,
+        &rtmp_out,
+    ])?;
 
-    // 4. Link the source to the decoder.
-    // The link from decoder to the sink will be handled dynamically.
-    source.link(&decoder)?;
+    srt_source.link(&tsdemux)?;
 
-    source.connect_notify(Some("stats"), |v,_pspec| {
-         let val = v.property_value("stats") ;
+    let mq_audio_pad = multiqueue
+        .request_pad_simple("sink_%u")
+        .expect("could not get multiqueue pad");
+    let mq_video_pad = multiqueue
+        .request_pad_simple("sink_%u")
+        .expect("could not get multiqueue pad");
 
-        if let Ok(stats) = val.get::<gstreamer::Structure>() {
-            println!("🚀 SRT Stats Updated:\n{}\n", stats.to_string());
-        } else {
-            println!("err")
-        }
-        
+    let h264parse_src_pad = h264parse.static_pad("src").unwrap();
+    let flv_video_pad = flvmux
+        .static_pad("audio")
+        .expect("could not get flxmux video pad");
+    h264parse_src_pad.link(&flv_video_pad)?;
+
+    let aacparse_src_pad = aacparse.static_pad("src").unwrap();
+    let flv_audio_pad = flvmux
+        .static_pad("audio")
+        .expect("could not get flxmux audio pad");
+    aacparse_src_pad.link(&flv_audio_pad);
+
+    flvmux.link(&rtmp_out)?;
+
+    srt_source.connect("caller-connecting", true, |a| {
+        println!("caller-connecting : {:?}", a);
+        Some(Value::from(true))
+        //None
     });
-    
+
     decoder.connect_pad_added(move |_, src_pad| {
         println!(
             "Received new pad '{:?}' from '{:?}'",
@@ -84,11 +122,8 @@ fn main() -> Result<(), Error> {
         }
     });
 
-    // 6. Start playing
     pipeline.set_state(gstreamer::State::Playing)?;
 
-
-    // 7. Wait until an error or end-of-stream (EOS) occurs
     let bus = pipeline.bus().unwrap();
     for msg in bus.iter_timed(gstreamer::ClockTime::NONE) {
         use gstreamer::MessageView;
@@ -108,16 +143,16 @@ fn main() -> Result<(), Error> {
             _ => (),
         }
 
-        let val = source.property_value("stats") ;
+        let val = srt_source.property_value("stats");
 
-        if let Ok(stats_struct) = val.get::<gstreamer::Structure>() {
+        /*  if let Ok(stats_struct) = val.get::<gstreamer::Structure>() {
             match SrtStatisticsReport::try_from(stats_struct) {
-                Ok(stats) =>  println!("test {:?}",stats),
+                Ok(stats) => println!("test {:?}",stats),
                 Err(e) => println!("err {e}"),
             };
         } else {
             println!("err")
-        }
+        }*/
     }
 
     // 8. Clean up

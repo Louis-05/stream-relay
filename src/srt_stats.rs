@@ -1,4 +1,3 @@
-
 #[derive(Debug)]
 pub struct SrtStatistics {
     pub packets_sent: i64,
@@ -38,17 +37,16 @@ impl TryFrom<gstreamer::Structure> for SrtStatisticsReport {
     type Error = anyhow::Error;
 
     fn try_from(value: gstreamer::Structure) -> Result<Self, Self::Error> {
+        let mut callers: Vec<SrtStatistics> = Vec::new();
 
-        let mut callers : Vec<SrtStatistics> = Vec::new();
-
-        let call =  value.get::<gstreamer::glib::ValueArray>("callers")?;
-
-        for statt in call.iter() {
-            let gstruct = statt.get::<gstreamer::Structure>()?;
-            callers.push(SrtStatistics::try_from(gstruct)?);
+        if let Ok(caller_array) = value.get::<gstreamer::glib::ValueArray>("callers") {
+            for statt in caller_array.iter() {
+                let gstruct = statt.get::<gstreamer::Structure>()?;
+                callers.push(SrtStatistics::try_from(gstruct)?);
+            }
         }
 
-        Ok(SrtStatisticsReport{
+        Ok(SrtStatisticsReport {
             callers,
             bytes_received_total: value.get("bytes-received-total")?,
         })
@@ -59,7 +57,7 @@ impl TryFrom<gstreamer::Structure> for SrtStatistics {
     type Error = anyhow::Error;
 
     fn try_from(value: gstreamer::Structure) -> Result<Self, Self::Error> {
-        Ok(SrtStatistics{
+        Ok(SrtStatistics {
             packets_sent: value.get("packets-sent")?,
             packets_sent_lost: value.get("packets-sent-lost")?,
             packets_retransmitted: value.get("packets-retransmitted")?,

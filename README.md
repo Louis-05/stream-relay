@@ -17,4 +17,4 @@
 
 gst-launch-1.0 -v videotestsrc ! video/x-raw, height=1080, width=1920 ! videoconvert ! x264enc tune=zerolatency ! video/x-h264, profile=high ! mpegtsmux ! srtsink uri=srt://172.19.128.1:9876?mode=caller
 
-export INPUT_PORT=9876 && export OUTPUT_PORT=9876 && export WEB_PORT=9876
+export INPUT_PORT=9876 && export OUTPUT_PORT=9876 && export WEB_PORT=9876 && export PASSPHRASE=mysuperpassphrase
