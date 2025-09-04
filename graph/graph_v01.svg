@@ -1,0 +1,323 @@
+<svg width="1922pt" height="374pt" viewBox="0.00 0.00 1922.21 374.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 370.4)">
+<title>pipeline</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-370.4 1918.21,-370.4 1918.21,4 -4,4"/>
+<text text-anchor="middle" x="957.1" y="-353.4" font-family="sans" font-size="10.00">&lt;GstPipeline&gt;</text>
+<text text-anchor="middle" x="957.1" y="-341.4" font-family="sans" font-size="10.00">test-pipeline</text>
+<text text-anchor="middle" x="957.1" y="-329.4" font-family="sans" font-size="10.00">[&gt;]</text>
+<g id="clust1" class="cluster">
+<title>cluster_rtmp_out_0x5f5a31d2d230</title>
+<path fill="#aaaaff" stroke="black" d="M1763.28,-53C1763.28,-53 1902.21,-53 1902.21,-53 1908.21,-53 1914.21,-59 1914.21,-65 1914.21,-65 1914.21,-151 1914.21,-151 1914.21,-157 1908.21,-163 1902.21,-163 1902.21,-163 1763.28,-163 1763.28,-163 1757.28,-163 1751.28,-157 1751.28,-151 1751.28,-151 1751.28,-65 1751.28,-65 1751.28,-59 1757.28,-53 1763.28,-53"/>
+<text text-anchor="middle" x="1832.75" y="-151.8" font-family="Bitstream Vera Sans" font-size="8.00">GstRTMPSink</text>
+<text text-anchor="middle" x="1832.75" y="-142.2" font-family="Bitstream Vera Sans" font-size="8.00">rtmp_out</text>
+<text text-anchor="middle" x="1832.75" y="-132.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+<text text-anchor="middle" x="1832.75" y="-123" font-family="Bitstream Vera Sans" font-size="8.00">last-sample=((GstSample*) 0x5f5a31d3dd20)</text>
+<text text-anchor="middle" x="1832.75" y="-113.4" font-family="Bitstream Vera Sans" font-size="8.00">location="rtmp://172.19.136.2:9001"</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_rtmp_out_0x5f5a31d2d230_sink</title>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_flvmux_0x5f5a31d29560</title>
+<path fill="#aaffaa" stroke="black" d="M1386.02,-24C1386.02,-24 1558.69,-24 1558.69,-24 1564.69,-24 1570.69,-30 1570.69,-36 1570.69,-36 1570.69,-161 1570.69,-161 1570.69,-167 1564.69,-173 1558.69,-173 1558.69,-173 1386.02,-173 1386.02,-173 1380.02,-173 1374.02,-167 1374.02,-161 1374.02,-161 1374.02,-36 1374.02,-36 1374.02,-30 1380.02,-24 1386.02,-24"/>
+<text text-anchor="middle" x="1472.35" y="-161.8" font-family="Bitstream Vera Sans" font-size="8.00">GstFlvMux</text>
+<text text-anchor="middle" x="1472.35" y="-152.2" font-family="Bitstream Vera Sans" font-size="8.00">flvmux</text>
+<text text-anchor="middle" x="1472.35" y="-142.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+<text text-anchor="middle" x="1472.35" y="-133" font-family="Bitstream Vera Sans" font-size="8.00">streamable=TRUE</text>
+<text text-anchor="middle" x="1472.35" y="-123.4" font-family="Bitstream Vera Sans" font-size="8.00">metadatacreator="GStreamer {VERSION} FLV muxer"</text>
+<text text-anchor="middle" x="1472.35" y="-113.8" font-family="Bitstream Vera Sans" font-size="8.00">encoder="GStreamer {VERSION} FLV muxer"</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_flvmux_0x5f5a31d29560_sink</title>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_flvmux_0x5f5a31d29560_src</title>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_aacparse_0x5f5a31d23a70</title>
+<path fill="#aaffaa" stroke="black" d="M1028.56,-8C1028.56,-8 1177.56,-8 1177.56,-8 1183.56,-8 1189.56,-14 1189.56,-20 1189.56,-20 1189.56,-87 1189.56,-87 1189.56,-93 1183.56,-99 1177.56,-99 1177.56,-99 1028.56,-99 1028.56,-99 1022.56,-99 1016.56,-93 1016.56,-87 1016.56,-87 1016.56,-20 1016.56,-20 1016.56,-14 1022.56,-8 1028.56,-8"/>
+<text text-anchor="middle" x="1103.06" y="-87.8" font-family="Bitstream Vera Sans" font-size="8.00">GstAacParse</text>
+<text text-anchor="middle" x="1103.06" y="-78.2" font-family="Bitstream Vera Sans" font-size="8.00">aacparse</text>
+<text text-anchor="middle" x="1103.06" y="-68.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_aacparse_0x5f5a31d23a70_sink</title>
+</g>
+<g id="clust8" class="cluster">
+<title>cluster_aacparse_0x5f5a31d23a70_src</title>
+</g>
+<g id="clust9" class="cluster">
+<title>cluster_h264parse_0x5f5a31d1e260</title>
+<path fill="#aaffaa" stroke="black" d="M1028.56,-108C1028.56,-108 1177.56,-108 1177.56,-108 1183.56,-108 1189.56,-114 1189.56,-120 1189.56,-120 1189.56,-187 1189.56,-187 1189.56,-193 1183.56,-199 1177.56,-199 1177.56,-199 1028.56,-199 1028.56,-199 1022.56,-199 1016.56,-193 1016.56,-187 1016.56,-187 1016.56,-120 1016.56,-120 1016.56,-114 1022.56,-108 1028.56,-108"/>
+<text text-anchor="middle" x="1103.06" y="-187.8" font-family="Bitstream Vera Sans" font-size="8.00">GstH264Parse</text>
+<text text-anchor="middle" x="1103.06" y="-178.2" font-family="Bitstream Vera Sans" font-size="8.00">h264parse</text>
+<text text-anchor="middle" x="1103.06" y="-168.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+</g>
+<g id="clust10" class="cluster">
+<title>cluster_h264parse_0x5f5a31d1e260_sink</title>
+</g>
+<g id="clust11" class="cluster">
+<title>cluster_h264parse_0x5f5a31d1e260_src</title>
+</g>
+<g id="clust12" class="cluster">
+<title>cluster_multiqueue_0x5f5a31d1a450</title>
+<path fill="#aaffaa" stroke="black" d="M725.6,-51C725.6,-51 874.6,-51 874.6,-51 880.6,-51 886.6,-57 886.6,-63 886.6,-63 886.6,-159 886.6,-159 886.6,-165 880.6,-171 874.6,-171 874.6,-171 725.6,-171 725.6,-171 719.6,-171 713.6,-165 713.6,-159 713.6,-159 713.6,-63 713.6,-63 713.6,-57 719.6,-51 725.6,-51"/>
+<text text-anchor="middle" x="800.1" y="-159.8" font-family="Bitstream Vera Sans" font-size="8.00">GstMultiQueue</text>
+<text text-anchor="middle" x="800.1" y="-150.2" font-family="Bitstream Vera Sans" font-size="8.00">multiqueue</text>
+<text text-anchor="middle" x="800.1" y="-140.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+</g>
+<g id="clust13" class="cluster">
+<title>cluster_multiqueue_0x5f5a31d1a450_sink</title>
+</g>
+<g id="clust14" class="cluster">
+<title>cluster_multiqueue_0x5f5a31d1a450_src</title>
+</g>
+<g id="clust15" class="cluster">
+<title>cluster_tsdemux_0x5f5a31a34ac0</title>
+<path fill="#aaffaa" stroke="black" d="M422.64,-51C422.64,-51 571.64,-51 571.64,-51 577.64,-51 583.64,-57 583.64,-63 583.64,-63 583.64,-168 583.64,-168 583.64,-174 577.64,-180 571.64,-180 571.64,-180 422.64,-180 422.64,-180 416.64,-180 410.64,-174 410.64,-168 410.64,-168 410.64,-63 410.64,-63 410.64,-57 416.64,-51 422.64,-51"/>
+<text text-anchor="middle" x="497.14" y="-168.8" font-family="Bitstream Vera Sans" font-size="8.00">GstTSDemux</text>
+<text text-anchor="middle" x="497.14" y="-159.2" font-family="Bitstream Vera Sans" font-size="8.00">tsdemux</text>
+<text text-anchor="middle" x="497.14" y="-149.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+<text text-anchor="middle" x="497.14" y="-140" font-family="Bitstream Vera Sans" font-size="8.00">parse-private-sections=TRUE</text>
+</g>
+<g id="clust16" class="cluster">
+<title>cluster_tsdemux_0x5f5a31a34ac0_sink</title>
+</g>
+<g id="clust17" class="cluster">
+<title>cluster_tsdemux_0x5f5a31a34ac0_src</title>
+</g>
+<g id="clust18" class="cluster">
+<title>cluster_source_0x5f5a31ce7320</title>
+<path fill="#ffaaaa" stroke="black" d="M110.21,-80C110.21,-80 172.93,-80 172.93,-80 178.93,-80 184.93,-86 184.93,-92 184.93,-92 184.93,-216 184.93,-216 184.93,-222 178.93,-228 172.93,-228 172.93,-228 110.21,-228 110.21,-228 104.21,-228 98.21,-222 98.21,-216 98.21,-216 98.21,-92 98.21,-92 98.21,-86 104.21,-80 110.21,-80"/>
+<text text-anchor="middle" x="141.57" y="-216.8" font-family="Bitstream Vera Sans" font-size="8.00">GstSRTSrc</text>
+<text text-anchor="middle" x="141.57" y="-207.2" font-family="Bitstream Vera Sans" font-size="8.00">source</text>
+<text text-anchor="middle" x="141.57" y="-197.6" font-family="Bitstream Vera Sans" font-size="8.00">[&gt;]</text>
+<text text-anchor="middle" x="141.57" y="-188" font-family="Bitstream Vera Sans" font-size="8.00">mode=listener</text>
+<text text-anchor="middle" x="141.57" y="-178.4" font-family="Bitstream Vera Sans" font-size="8.00">localport=9876</text>
+<text text-anchor="middle" x="141.57" y="-168.8" font-family="Bitstream Vera Sans" font-size="8.00">pbkeylen=32</text>
+<text text-anchor="middle" x="141.57" y="-159.2" font-family="Bitstream Vera Sans" font-size="8.00">streamid=NULL</text>
+<text text-anchor="middle" x="141.57" y="-149.6" font-family="Bitstream Vera Sans" font-size="8.00">authentication=TRUE</text>
+<text text-anchor="middle" x="141.57" y="-140" font-family="Bitstream Vera Sans" font-size="8.00">keep-listening=TRUE</text>
+</g>
+<g id="clust19" class="cluster">
+<title>cluster_source_0x5f5a31ce7320_src</title>
+</g>
+<!-- legend -->
+<g id="node1" class="node">
+<title>legend</title>
+<polygon fill="lightgrey" stroke="black" points="282.14,-71.6 0,-71.6 0,-10.4 282.14,-10.4 282.14,-71.6"/>
+<text text-anchor="start" x="3.6" y="-59.9" font-family="sans" font-size="9.00">Legend</text>
+<text text-anchor="start" x="3.6" y="-49.1" font-family="sans" font-size="9.00">Element-States: [~] void-pending, [0] null, [-] ready, [=] paused, [&gt;] playing</text>
+<text text-anchor="start" x="3.6" y="-38.3" font-family="sans" font-size="9.00">Pad-Activation: [-] none, [&gt;] push, [&lt;] pull</text>
+<text text-anchor="start" x="3.6" y="-27.5" font-family="sans" font-size="9.00">Pad-Flags: [b]locked, [f]lushing, [b]locking, [E]OS; upper-case is set</text>
+<text text-anchor="start" x="3.6" y="-16.7" font-family="sans" font-size="9.00">Pad-Task: [T] has started task, [t] has paused task</text>
+</g>
+<!-- rtmp_out_0x5f5a31d2d230_sink_0x5f5a31d2d540 -->
+<g id="node2" class="node">
+<title>rtmp_out_0x5f5a31d2d230_sink_0x5f5a31d2d540</title>
+<polygon fill="#aaaaff" stroke="black" points="1859.25,-90.8 1805.25,-90.8 1805.25,-69.2 1859.25,-69.2 1859.25,-90.8"/>
+<text text-anchor="middle" x="1832.25" y="-82.7" font-family="sans" font-size="9.00">sink</text>
+<text text-anchor="middle" x="1832.25" y="-71.9" font-family="sans" font-size="9.00">[&gt;][bfbE]</text>
+</g>
+<!-- flvmux_0x5f5a31d29560_video_0x5f5a31d30a30 -->
+<g id="node3" class="node">
+<title>flvmux_0x5f5a31d29560_video_0x5f5a31d30a30</title>
+<polygon fill="#aaaaff" stroke="black" stroke-dasharray="5,2" points="1455.35,-90.8 1401.35,-90.8 1401.35,-69.2 1455.35,-69.2 1455.35,-90.8"/>
+<text text-anchor="middle" x="1428.35" y="-82.7" font-family="sans" font-size="9.00">video</text>
+<text text-anchor="middle" x="1428.35" y="-71.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- flvmux_0x5f5a31d29560_src_0x5f5a31d29c70 -->
+<g id="node5" class="node">
+<title>flvmux_0x5f5a31d29560_src_0x5f5a31d29c70</title>
+<polygon fill="#ffaaaa" stroke="black" points="1542.35,-90.8 1488.35,-90.8 1488.35,-69.2 1542.35,-69.2 1542.35,-90.8"/>
+<text text-anchor="middle" x="1515.35" y="-82.7" font-family="sans" font-size="9.00">src</text>
+<text text-anchor="middle" x="1515.35" y="-71.9" font-family="sans" font-size="9.00">[&gt;][bfbE][t]</text>
+</g>
+<!-- flvmux_0x5f5a31d29560_video_0x5f5a31d30a30&#45;&gt;flvmux_0x5f5a31d29560_src_0x5f5a31d29c70 -->
+<!-- flvmux_0x5f5a31d29560_audio_0x5f5a31d32180 -->
+<g id="node4" class="node">
+<title>flvmux_0x5f5a31d29560_audio_0x5f5a31d32180</title>
+<polygon fill="#aaaaff" stroke="black" stroke-dasharray="5,2" points="1455.35,-61.8 1401.35,-61.8 1401.35,-40.2 1455.35,-40.2 1455.35,-61.8"/>
+<text text-anchor="middle" x="1428.35" y="-53.7" font-family="sans" font-size="9.00">audio</text>
+<text text-anchor="middle" x="1428.35" y="-42.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- flvmux_0x5f5a31d29560_src_0x5f5a31d29c70&#45;&gt;rtmp_out_0x5f5a31d2d230_sink_0x5f5a31d2d540 -->
+<g id="edge2" class="edge">
+<title>flvmux_0x5f5a31d29560_src_0x5f5a31d29c70-&gt;rtmp_out_0x5f5a31d2d230_sink_0x5f5a31d2d540</title>
+<path fill="none" stroke="black" d="M1542.66,-80C1598.46,-80 1728.86,-80 1793.52,-80"/>
+<polygon fill="black" stroke="black" points="1793.28,-83.5 1803.28,-80 1793.28,-76.5 1793.28,-83.5"/>
+<text text-anchor="start" x="1578.69" y="-93.5" font-family="monospace" font-size="9.00">video/x-flv</text>
+<text text-anchor="start" x="1578.69" y="-82.7" font-family="monospace" font-size="9.00">        streamheader: &lt; (buffer)464c560105... &gt;</text>
+</g>
+<!-- aacparse_0x5f5a31d23a70_sink_0x5f5a31d23d60 -->
+<g id="node6" class="node">
+<title>aacparse_0x5f5a31d23a70_sink_0x5f5a31d23d60</title>
+<polygon fill="#aaaaff" stroke="black" points="1086.56,-45.8 1032.56,-45.8 1032.56,-24.2 1086.56,-24.2 1086.56,-45.8"/>
+<text text-anchor="middle" x="1059.56" y="-37.7" font-family="sans" font-size="9.00">sink</text>
+<text text-anchor="middle" x="1059.56" y="-26.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- aacparse_0x5f5a31d23a70_src_0x5f5a31d24010 -->
+<g id="node7" class="node">
+<title>aacparse_0x5f5a31d23a70_src_0x5f5a31d24010</title>
+<polygon fill="#ffaaaa" stroke="black" points="1173.56,-45.8 1119.56,-45.8 1119.56,-24.2 1173.56,-24.2 1173.56,-45.8"/>
+<text text-anchor="middle" x="1146.56" y="-37.7" font-family="sans" font-size="9.00">src</text>
+<text text-anchor="middle" x="1146.56" y="-26.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- aacparse_0x5f5a31d23a70_sink_0x5f5a31d23d60&#45;&gt;aacparse_0x5f5a31d23a70_src_0x5f5a31d24010 -->
+<!-- aacparse_0x5f5a31d23a70_src_0x5f5a31d24010&#45;&gt;flvmux_0x5f5a31d29560_audio_0x5f5a31d32180 -->
+<g id="edge4" class="edge">
+<title>aacparse_0x5f5a31d23a70_src_0x5f5a31d24010-&gt;flvmux_0x5f5a31d29560_audio_0x5f5a31d32180</title>
+<path fill="none" stroke="black" d="M1174.03,-30.91C1215.37,-25.28 1297.61,-17.1 1366.02,-29 1374.45,-30.47 1383.25,-32.99 1391.47,-35.81"/>
+<polygon fill="black" stroke="black" points="1390.21,-39.08 1400.8,-39.25 1392.63,-32.51 1390.21,-39.08"/>
+<text text-anchor="start" x="1238.93" y="-128.9" font-family="monospace" font-size="9.00">audio/mpeg</text>
+<text text-anchor="start" x="1238.93" y="-118.1" font-family="monospace" font-size="9.00">              framed: true</text>
+<text text-anchor="start" x="1238.93" y="-107.3" font-family="monospace" font-size="9.00">         mpegversion: 4</text>
+<text text-anchor="start" x="1238.93" y="-96.5" font-family="monospace" font-size="9.00">               level: 2</text>
+<text text-anchor="start" x="1238.93" y="-85.7" font-family="monospace" font-size="9.00">        base-profile: lc</text>
+<text text-anchor="start" x="1238.93" y="-74.9" font-family="monospace" font-size="9.00">             profile: lc</text>
+<text text-anchor="start" x="1238.93" y="-64.1" font-family="monospace" font-size="9.00">                rate: 48000</text>
+<text text-anchor="start" x="1238.93" y="-53.3" font-family="monospace" font-size="9.00">            channels: 2</text>
+<text text-anchor="start" x="1238.93" y="-42.5" font-family="monospace" font-size="9.00">       stream-format: raw</text>
+<text text-anchor="start" x="1238.93" y="-31.7" font-family="monospace" font-size="9.00">          codec_data: 1190</text>
+</g>
+<!-- h264parse_0x5f5a31d1e260_sink_0x5f5a31d1f070 -->
+<g id="node8" class="node">
+<title>h264parse_0x5f5a31d1e260_sink_0x5f5a31d1f070</title>
+<polygon fill="#aaaaff" stroke="black" points="1086.56,-145.8 1032.56,-145.8 1032.56,-124.2 1086.56,-124.2 1086.56,-145.8"/>
+<text text-anchor="middle" x="1059.56" y="-137.7" font-family="sans" font-size="9.00">sink</text>
+<text text-anchor="middle" x="1059.56" y="-126.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- h264parse_0x5f5a31d1e260_src_0x5f5a31d1f320 -->
+<g id="node9" class="node">
+<title>h264parse_0x5f5a31d1e260_src_0x5f5a31d1f320</title>
+<polygon fill="#ffaaaa" stroke="black" points="1173.56,-145.8 1119.56,-145.8 1119.56,-124.2 1173.56,-124.2 1173.56,-145.8"/>
+<text text-anchor="middle" x="1146.56" y="-137.7" font-family="sans" font-size="9.00">src</text>
+<text text-anchor="middle" x="1146.56" y="-126.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- h264parse_0x5f5a31d1e260_sink_0x5f5a31d1f070&#45;&gt;h264parse_0x5f5a31d1e260_src_0x5f5a31d1f320 -->
+<!-- h264parse_0x5f5a31d1e260_src_0x5f5a31d1f320&#45;&gt;flvmux_0x5f5a31d29560_video_0x5f5a31d30a30 -->
+<g id="edge6" class="edge">
+<title>h264parse_0x5f5a31d1e260_src_0x5f5a31d1f320-&gt;flvmux_0x5f5a31d29560_video_0x5f5a31d30a30</title>
+<path fill="none" stroke="black" d="M1173.85,-140.63C1216.01,-148.41 1300.61,-158.86 1366.02,-134 1384.16,-127.1 1400.43,-112.16 1411.64,-99.74"/>
+<polygon fill="black" stroke="black" points="1414.04,-102.31 1417.89,-92.44 1408.72,-97.76 1414.04,-102.31"/>
+<text text-anchor="start" x="1197.56" y="-314.3" font-family="monospace" font-size="9.00">video/x-h264</text>
+<text text-anchor="start" x="1197.56" y="-303.5" font-family="monospace" font-size="9.00">       stream-format: avc</text>
+<text text-anchor="start" x="1197.56" y="-292.7" font-family="monospace" font-size="9.00">  pixel-aspect-ratio: 1/1</text>
+<text text-anchor="start" x="1197.56" y="-281.9" font-family="monospace" font-size="9.00">               width: 1280</text>
+<text text-anchor="start" x="1197.56" y="-271.1" font-family="monospace" font-size="9.00">              height: 720</text>
+<text text-anchor="start" x="1197.56" y="-260.3" font-family="monospace" font-size="9.00">           framerate: 30/1</text>
+<text text-anchor="start" x="1197.56" y="-249.5" font-family="monospace" font-size="9.00">  coded-picture-structure: frame</text>
+<text text-anchor="start" x="1197.56" y="-238.7" font-family="monospace" font-size="9.00">       chroma-format: 4:2:0</text>
+<text text-anchor="start" x="1197.56" y="-227.9" font-family="monospace" font-size="9.00">      bit-depth-luma: 8</text>
+<text text-anchor="start" x="1197.56" y="-217.1" font-family="monospace" font-size="9.00">    bit-depth-chroma: 8</text>
+<text text-anchor="start" x="1197.56" y="-206.3" font-family="monospace" font-size="9.00">         colorimetry: bt709</text>
+<text text-anchor="start" x="1197.56" y="-195.5" font-family="monospace" font-size="9.00">              parsed: true</text>
+<text text-anchor="start" x="1197.56" y="-184.7" font-family="monospace" font-size="9.00">           alignment: au</text>
+<text text-anchor="start" x="1197.56" y="-173.9" font-family="monospace" font-size="9.00">             profile: high</text>
+<text text-anchor="start" x="1197.56" y="-163.1" font-family="monospace" font-size="9.00">               level: 3.1</text>
+<text text-anchor="start" x="1197.56" y="-152.3" font-family="monospace" font-size="9.00">          codec_data: 0164001fffe10025676400...</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_sink_0_0x5f5a31d2f9a0 -->
+<g id="node10" class="node">
+<title>multiqueue_0x5f5a31d1a450_sink_0_0x5f5a31d2f9a0</title>
+<polygon fill="#aaaaff" stroke="black" stroke-dasharray="5,2" points="783.6,-117.8 729.6,-117.8 729.6,-96.2 783.6,-96.2 783.6,-117.8"/>
+<text text-anchor="middle" x="756.6" y="-109.7" font-family="sans" font-size="9.00">sink_0</text>
+<text text-anchor="middle" x="756.6" y="-98.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_src_0_0x5f5a31d2fe00 -->
+<g id="node12" class="node">
+<title>multiqueue_0x5f5a31d1a450_src_0_0x5f5a31d2fe00</title>
+<polygon fill="#ffaaaa" stroke="black" stroke-dasharray="1,5" points="870.6,-117.8 816.6,-117.8 816.6,-96.2 870.6,-96.2 870.6,-117.8"/>
+<text text-anchor="middle" x="843.6" y="-109.7" font-family="sans" font-size="9.00">src_0</text>
+<text text-anchor="middle" x="843.6" y="-98.9" font-family="sans" font-size="9.00">[&gt;][bfb][t]</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_sink_0_0x5f5a31d2f9a0&#45;&gt;multiqueue_0x5f5a31d1a450_src_0_0x5f5a31d2fe00 -->
+<!-- multiqueue_0x5f5a31d1a450_sink_1_0x5f5a31d312f0 -->
+<g id="node11" class="node">
+<title>multiqueue_0x5f5a31d1a450_sink_1_0x5f5a31d312f0</title>
+<polygon fill="#aaaaff" stroke="black" stroke-dasharray="5,2" points="783.6,-88.8 729.6,-88.8 729.6,-67.2 783.6,-67.2 783.6,-88.8"/>
+<text text-anchor="middle" x="756.6" y="-80.7" font-family="sans" font-size="9.00">sink_1</text>
+<text text-anchor="middle" x="756.6" y="-69.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_src_0_0x5f5a31d2fe00&#45;&gt;h264parse_0x5f5a31d1e260_sink_0x5f5a31d1f070 -->
+<g id="edge8" class="edge">
+<title>multiqueue_0x5f5a31d1a450_src_0_0x5f5a31d2fe00-&gt;h264parse_0x5f5a31d1e260_sink_0x5f5a31d1f070</title>
+<path fill="none" stroke="black" d="M870.83,-110.43C908.37,-115.35 977.61,-124.41 1020.7,-130.05"/>
+<polygon fill="black" stroke="black" points="1020.24,-133.51 1030.61,-131.34 1021.15,-126.57 1020.24,-133.51"/>
+<text text-anchor="start" x="894.6" y="-141.73" font-family="monospace" font-size="9.00">video/x-h264</text>
+<text text-anchor="start" x="894.6" y="-130.93" font-family="monospace" font-size="9.00">       stream-format: byte-stream</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_src_1_0x5f5a31d31810 -->
+<g id="node13" class="node">
+<title>multiqueue_0x5f5a31d1a450_src_1_0x5f5a31d31810</title>
+<polygon fill="#ffaaaa" stroke="black" stroke-dasharray="1,5" points="870.6,-88.8 816.6,-88.8 816.6,-67.2 870.6,-67.2 870.6,-88.8"/>
+<text text-anchor="middle" x="843.6" y="-80.7" font-family="sans" font-size="9.00">src_1</text>
+<text text-anchor="middle" x="843.6" y="-69.9" font-family="sans" font-size="9.00">[&gt;][bfb][t]</text>
+</g>
+<!-- multiqueue_0x5f5a31d1a450_src_1_0x5f5a31d31810&#45;&gt;aacparse_0x5f5a31d23a70_sink_0x5f5a31d23d60 -->
+<g id="edge9" class="edge">
+<title>multiqueue_0x5f5a31d1a450_src_1_0x5f5a31d31810-&gt;aacparse_0x5f5a31d23a70_sink_0x5f5a31d23d60</title>
+<path fill="none" stroke="black" d="M870.83,-72.73C908.45,-65.17 977.91,-51.21 1020.97,-42.55"/>
+<polygon fill="black" stroke="black" points="1021.51,-46.02 1030.62,-40.61 1020.13,-39.15 1021.51,-46.02"/>
+<text text-anchor="start" x="908.59" y="-91.91" font-family="monospace" font-size="9.00">audio/mpeg</text>
+<text text-anchor="start" x="908.59" y="-81.11" font-family="monospace" font-size="9.00">         mpegversion: 4</text>
+<text text-anchor="start" x="908.59" y="-70.31" font-family="monospace" font-size="9.00">       stream-format: adts</text>
+</g>
+<!-- tsdemux_0x5f5a31a34ac0_sink_0x5f5a31d020b0 -->
+<g id="node14" class="node">
+<title>tsdemux_0x5f5a31a34ac0_sink_0x5f5a31d020b0</title>
+<polygon fill="#aaaaff" stroke="black" points="480.64,-117.8 426.64,-117.8 426.64,-96.2 480.64,-96.2 480.64,-117.8"/>
+<text text-anchor="middle" x="453.64" y="-109.7" font-family="sans" font-size="9.00">sink</text>
+<text text-anchor="middle" x="453.64" y="-98.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- tsdemux_0x5f5a31a34ac0_video_0_0100_0x7b4c0c014100 -->
+<g id="node15" class="node">
+<title>tsdemux_0x5f5a31a34ac0_video_0_0100_0x7b4c0c014100</title>
+<polygon fill="#ffaaaa" stroke="black" stroke-dasharray="1,5" points="567.64,-117.8 513.64,-117.8 513.64,-96.2 567.64,-96.2 567.64,-117.8"/>
+<text text-anchor="middle" x="540.64" y="-109.7" font-family="sans" font-size="9.00">video_0_0100</text>
+<text text-anchor="middle" x="540.64" y="-98.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- tsdemux_0x5f5a31a34ac0_sink_0x5f5a31d020b0&#45;&gt;tsdemux_0x5f5a31a34ac0_video_0_0100_0x7b4c0c014100 -->
+<!-- tsdemux_0x5f5a31a34ac0_video_0_0100_0x7b4c0c014100&#45;&gt;multiqueue_0x5f5a31d1a450_sink_0_0x5f5a31d2f9a0 -->
+<g id="edge11" class="edge">
+<title>tsdemux_0x5f5a31a34ac0_video_0_0100_0x7b4c0c014100-&gt;multiqueue_0x5f5a31d1a450_sink_0_0x5f5a31d2f9a0</title>
+<path fill="none" stroke="black" d="M567.88,-107C605.41,-107 674.65,-107 717.74,-107"/>
+<polygon fill="black" stroke="black" points="717.63,-110.5 727.63,-107 717.63,-103.5 717.63,-110.5"/>
+<text text-anchor="start" x="591.64" y="-120.5" font-family="monospace" font-size="9.00">video/x-h264</text>
+<text text-anchor="start" x="591.64" y="-109.7" font-family="monospace" font-size="9.00">       stream-format: byte-stream</text>
+</g>
+<!-- tsdemux_0x5f5a31a34ac0_audio_0_0101_0x7b4c0c015060 -->
+<g id="node16" class="node">
+<title>tsdemux_0x5f5a31a34ac0_audio_0_0101_0x7b4c0c015060</title>
+<polygon fill="#ffaaaa" stroke="black" stroke-dasharray="1,5" points="567.64,-88.8 513.64,-88.8 513.64,-67.2 567.64,-67.2 567.64,-88.8"/>
+<text text-anchor="middle" x="540.64" y="-80.7" font-family="sans" font-size="9.00">audio_0_0101</text>
+<text text-anchor="middle" x="540.64" y="-69.9" font-family="sans" font-size="9.00">[&gt;][bfb]</text>
+</g>
+<!-- tsdemux_0x5f5a31a34ac0_audio_0_0101_0x7b4c0c015060&#45;&gt;multiqueue_0x5f5a31d1a450_sink_1_0x5f5a31d312f0 -->
+<g id="edge12" class="edge">
+<title>tsdemux_0x5f5a31a34ac0_audio_0_0101_0x7b4c0c015060-&gt;multiqueue_0x5f5a31d1a450_sink_1_0x5f5a31d312f0</title>
+<path fill="none" stroke="black" d="M568.08,-75.24C575.68,-74.56 583.98,-73.94 591.64,-73.6 642.24,-71.38 655,-71.38 705.6,-73.6 709.55,-73.77 713.67,-74.02 717.78,-74.32"/>
+<polygon fill="black" stroke="black" points="717.4,-77.8 727.65,-75.12 717.96,-70.82 717.4,-77.8"/>
+<text text-anchor="start" x="605.63" y="-97.9" font-family="monospace" font-size="9.00">audio/mpeg</text>
+<text text-anchor="start" x="605.63" y="-87.1" font-family="monospace" font-size="9.00">         mpegversion: 4</text>
+<text text-anchor="start" x="605.63" y="-76.3" font-family="monospace" font-size="9.00">       stream-format: adts</text>
+</g>
+<!-- source_0x5f5a31ce7320_src_0x5f5a31ce7630 -->
+<g id="node17" class="node">
+<title>source_0x5f5a31ce7320_src_0x5f5a31ce7630</title>
+<polygon fill="#ffaaaa" stroke="black" points="168.07,-117.8 114.07,-117.8 114.07,-96.2 168.07,-96.2 168.07,-117.8"/>
+<text text-anchor="middle" x="141.07" y="-109.7" font-family="sans" font-size="9.00">src</text>
+<text text-anchor="middle" x="141.07" y="-98.9" font-family="sans" font-size="9.00">[&gt;][bfb][T]</text>
+</g>
+<!-- source_0x5f5a31ce7320_src_0x5f5a31ce7630&#45;&gt;tsdemux_0x5f5a31a34ac0_sink_0x5f5a31d020b0 -->
+<g id="edge13" class="edge">
+<title>source_0x5f5a31ce7320_src_0x5f5a31ce7630-&gt;tsdemux_0x5f5a31a34ac0_sink_0x5f5a31d020b0</title>
+<path fill="none" stroke="black" d="M168.55,-107C223.67,-107 350.91,-107 414.72,-107"/>
+<polygon fill="black" stroke="black" points="414.71,-110.5 424.71,-107 414.71,-103.5 414.71,-110.5"/>
+<text text-anchor="middle" x="346.39" y="-109.7" font-family="monospace" font-size="9.00">                                                  </text>
+<text text-anchor="start" x="297.65" y="-108.8" font-family="monospace" font-size="6.00">video/mpegts</text>
+<text text-anchor="start" x="297.65" y="-101.6" font-family="monospace" font-size="6.00">        systemstream: true</text>
+<text text-anchor="middle" x="268.55" y="-105.2" font-family="monospace" font-size="6.00">ANY</text>
+</g>
+</g>
+</svg>

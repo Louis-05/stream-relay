@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.99"
-axum = "0.8.4"
+#axum = "0.8.4"
 thiserror = "2.0.16"
-tokio = { version = "1.47.1", features = ["full"] }
+#tokio = { version = "1.47.1", features = ["full"] }
 gstreamer = "0.24.1"

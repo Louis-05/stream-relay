@@ -1,5 +1,5 @@
-use anyhow::Error;
-use gstreamer::{Structure, glib::Value, prelude::*};
+use anyhow::{Context, Error};
+use gstreamer::{glib::Value, prelude::*, DebugGraphDetails, Structure};
 
 use crate::{config::Config, srt_stats::SrtStatisticsReport};
 mod config;
@@ -27,7 +27,7 @@ fn main() -> Result<(), Error> {
         .name("tsdemux")
         .build()?;
 
-    let multiqueue = gstreamer::ElementFactory::make("multiqueue")
+     let multiqueue = gstreamer::ElementFactory::make("multiqueue")
         .name("multiqueue")
         .build()?;
 
@@ -39,6 +39,7 @@ fn main() -> Result<(), Error> {
         .name("aacparse")
         .build()?;
 
+
     let flvmux = gstreamer::ElementFactory::make("flvmux")
         .name("flvmux")
         .property("streamable", true)
@@ -46,87 +47,87 @@ fn main() -> Result<(), Error> {
 
     let rtmp_out = gstreamer::ElementFactory::make("rtmpsink")
         .name("rtmp_out")
+        .property("location", "rtmp://172.19.136.2:9001")
         .build()?;
 
     let pipeline = gstreamer::Pipeline::with_name("test-pipeline");
-    pipeline.add_many([
-        &srt_source,
-        &tsdemux,
-        &multiqueue,
-        &h264parse,
-        &aacparse,
-        &flvmux,
-        &rtmp_out,
-    ])?;
+    pipeline.add_many([&srt_source, &tsdemux, &multiqueue,&h264parse,&aacparse,&flvmux,&rtmp_out])?;
 
     srt_source.link(&tsdemux)?;
+    
+    
+    let mq_video_src_pad  = multiqueue.request_pad_simple("sink_0").expect("could not get multiqueue pad");
+    let mq_video_sink_pad = multiqueue.static_pad("src_0").unwrap();
+    let h264_src_pad = h264parse.static_pad("sink").unwrap();
+    mq_video_sink_pad.link(&h264_src_pad)?;
+    h264parse.link(&flvmux)?;
 
-    let mq_audio_pad = multiqueue
-        .request_pad_simple("sink_%u")
-        .expect("could not get multiqueue pad");
-    let mq_video_pad = multiqueue
-        .request_pad_simple("sink_%u")
-        .expect("could not get multiqueue pad");
-
-    let h264parse_src_pad = h264parse.static_pad("src").unwrap();
-    let flv_video_pad = flvmux
-        .static_pad("audio")
-        .expect("could not get flxmux video pad");
-    h264parse_src_pad.link(&flv_video_pad)?;
-
-    let aacparse_src_pad = aacparse.static_pad("src").unwrap();
-    let flv_audio_pad = flvmux
-        .static_pad("audio")
-        .expect("could not get flxmux audio pad");
-    aacparse_src_pad.link(&flv_audio_pad);
+    let mq_audio_src_pad  = multiqueue.request_pad_simple("sink_1").expect("could not get multiqueue pad");
+    let mq_audio_sink_pad = multiqueue.static_pad("src_1").unwrap();
+    let aac_src_pad = aacparse.static_pad("sink").unwrap();
+    mq_audio_sink_pad.link(&aac_src_pad)?;
+    aacparse.link(&flvmux)?;
+   
 
     flvmux.link(&rtmp_out)?;
 
     srt_source.connect("caller-connecting", true, |a| {
-        println!("caller-connecting : {:?}", a);
+        println!("caller-connecting : {:?}",a);
         Some(Value::from(true))
         //None
     });
 
-    decoder.connect_pad_added(move |_, src_pad| {
+    tsdemux.connect_pad_added(move |_, ts_src_pad| {
         println!(
             "Received new pad '{:?}' from '{:?}'",
-            src_pad.name(),
-            src_pad.parent_element().unwrap().name()
+            ts_src_pad.name(),
+            ts_src_pad.parent_element().unwrap().name()
         );
 
-        let sink_pad = video_sink
-            .static_pad("sink")
-            .expect("Failed to get static sink pad from videosink");
-        if sink_pad.is_linked() {
-            println!("Sink pad is already linked. Ignoring.");
-            return;
-        }
-
         // Check the new pad's type
-        let new_pad_caps = src_pad
+        let new_pad_caps = ts_src_pad
             .current_caps()
             .expect("Failed to get caps of new pad.");
         let new_pad_struct = new_pad_caps
             .structure(0)
             .expect("Failed to get structure of new pad caps.");
 
-        if new_pad_struct.name().starts_with("video/x-raw") {
-            println!("Pad is a raw video pad. Linking...");
-            let res = src_pad.link(&sink_pad);
+        println!("pad caps : {}",new_pad_caps.to_string());
+        println!("pad struct : {}",new_pad_struct.to_string());
+
+        if new_pad_struct.name().starts_with("video/x-h264") {
+            println!("Pad is a h264 video pad. Linking...");
+            let res = ts_src_pad.link(&mq_video_src_pad);
             if res.is_err() {
                 println!("Failed to link pads: {:?}", res);
             }
-        } else {
+        } else if new_pad_struct.name().starts_with("audio/mpeg") {
+            println!("Pad is an aac audio pad. Linking...");
+            let res = ts_src_pad.link(&mq_audio_src_pad);
+            if res.is_err() {
+                println!("Failed to link pads: {:?}", res);
+            }
+
+        
+        }
+        else {
             println!("Pad is not a raw video pad. Ignoring.");
         }
+
+
+
     });
 
-    pipeline.set_state(gstreamer::State::Playing)?;
+    println!("testtest");
+    
+    pipeline.set_state(gstreamer::State::Playing).context("ERROR PLAYING")?;
 
     let bus = pipeline.bus().unwrap();
     for msg in bus.iter_timed(gstreamer::ClockTime::NONE) {
         use gstreamer::MessageView;
+
+        let res = pipeline.debug_to_dot_data(DebugGraphDetails::all());
+println!("{}",res.as_str());
         match msg.view() {
             MessageView::Error(err) => {
                 eprintln!(
@@ -143,9 +144,9 @@ fn main() -> Result<(), Error> {
             _ => (),
         }
 
-        let val = srt_source.property_value("stats");
+        let val = srt_source.property_value("stats") ;
 
-        /*  if let Ok(stats_struct) = val.get::<gstreamer::Structure>() {
+       /*  if let Ok(stats_struct) = val.get::<gstreamer::Structure>() {
             match SrtStatisticsReport::try_from(stats_struct) {
                 Ok(stats) => println!("test {:?}",stats),
                 Err(e) => println!("err {e}"),
