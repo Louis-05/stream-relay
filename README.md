@@ -1,5 +1,5 @@
 # Stream-relay
-**⚠️ WIP ⚠️**\
+**⚠️ WIP ⚠️** Prototyping for the moment so code quality is bad.\
 Relay for a video stream. This service allows for a stable output stream (RTMP) even if the source input (SRT) is temporarily interrupted.
 
 ## Depedencies
